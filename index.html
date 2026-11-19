@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HRD LAB 3D | Impressão 3D, Modelagem e Peças Personalizadas</title>
+  <meta name="description" content="HRD LAB 3D - Impressão 3D e Modelagem técnica e afetiva. Bustos e tags pet, peças funcionais sob medida e prototipagem com alta precisão.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #12161a;
+      --card-bg: #1c2228;
+      --text-main: #f0f4f8;
+      --text-muted: #9ba8b5;
+      --accent-cyan: #00b4d8;
+      --accent-hover: #0096c7;
+      --border-color: #2b3540;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+    header {
+      background-color: rgba(18, 22, 26, 0.95);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+    .brand-title span {
+      color: var(--accent-cyan);
+    }
+    .brand-sub {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      margin-top: -3px;
+    }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: var(--accent-cyan);
+    }
+    .btn-header {
+      background: var(--accent-cyan);
+      color: #12161a !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+    .btn-header:hover {
+      background: var(--accent-hover);
+    }
+    .hero {
+      text-align: center;
+      padding: 5rem 1.5rem 4rem;
+      max-width: 850px;
+      margin: 0 auto;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(0, 180, 216, 0.15);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(0, 180, 216, 0.3);
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--accent-cyan);
+      color: #12161a;
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: transform 0.2s, background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-main);
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: border 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .section {
+      padding: 4rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 0.8rem;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.8rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-cyan);
+    }
+    .card-icon {
+      font-size: 2rem;
+      color: var(--accent-cyan);
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+    .card ul {
+      list-style: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+    .card ul li {
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .card ul li::before {
+      content: "✔";
+      color: var(--accent-cyan);
+      font-size: 0.8rem;
+    }
+    .workflow {
+      background: #161b20;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      padding: 3rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+    .step-num {
+      width: 45px;
+      height: 45px;
+      background: rgba(0, 180, 216, 0.2);
+      color: var(--accent-cyan);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      border: 1px solid var(--accent-cyan);
+    }
+    .contact-box {
+      background: linear-gradient(145deg, #182027, #13171b);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 3.5rem 2rem;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .contact-box h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+    .contact-box p {
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    @media(max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      nav a {
+        margin: 0 0.5rem;
+      }
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <div class="brand-title">HRD <span>LAB</span> 3D</div>
+      <div class="brand-sub">Impressão 3D & Modelagem</div>
+    </div>
+    <nav>
+      <a href="#servicos">Serviços</a>
+      <a href="#como-funciona">Como Funciona</a>
+      <a href="#contato" class="btn-header">Pedir Orçamento</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="badge">Laboratório de Manufatura Sob Demanda</div>
+    <h1>Do arquivo digital à peça perfeita na sua mão.</h1>
+    <p>Especialistas em bustos e memoriais pet detalhados, suportes exclusivos e peças funcionais sob medida com acabamento técnico e alta durabilidade.</p>
+    <div class="hero-actions">
+      <!-- Substitua o link com seu número de WhatsApp com DDD -->
+      <a href="https://wa.me/5561999999999?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20com%20a%20HRD%20LAB%203D." target="_blank" class="btn-primary">
+        Fazer Orçamento no WhatsApp
+      </a>
+      <a href="#servicos" class="btn-secondary">Conhecer Linhas de Produção</a>
+    </div>
+  </section>
+
+  <section class="section" id="servicos">
+    <h2 class="section-title">O que produzimos</h2>
+    <p class="section-subtitle">Tecnologia FDM de precisão combinada com acabamento minucioso para peças decorativas e projetos mecânicos.</p>
+    
+    <div class="grid-cards">
+      <div class="card">
+        <div class="card-icon">🐾</div>
+        <h3>Linha Pet & Homenagens</h3>
+        <p>Eternize a presença do seu companheiro de quatro patas com peças exclusivas e personalizadas.</p>
+        <ul>
+          <li>Bustos caninos e felinos realistas</li>
+          <li>Tags de coleira personalizadas e leves</li>
+          <li>Comedouros ergonômicos e suportes</li>
+          <li>Memoriais e peças afetivas sob medida</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <h3>Peças Técnicas & Reposição</h3>
+        <p>Soluções funcionais em filamentos resistentes para o dia a dia, ferramentas e utilidades.</p>
+        <ul>
+          <li>Peças de reposição fora de linha</li>
+          <li>Gabaritos e suportes organizadores</li>
+          <li>Acessórios automotivos sob medida</li>
+          <li>Itens resistentes em PETG e materiais técnicos</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📐</div>
+        <h3>Prototipagem & Modelagem</h3>
+        <p>Transformamos ideias de papel ou arquivos 3D brutos em protótipos reais e funcionais.</p>
+        <ul>
+          <li>Fatiamento e calibração fina</li>
+          <li>Testes de tolerância e encaixe</li>
+          <li>Impressão a partir de STL, OBJ ou STEP</li>
+          <li>Consultoria e ajuste dimensional</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="como-funciona">
+    <h2 class="section-title">Como Funciona</h2>
+    <p class="section-subtitle">Processo simples, transparente e sem burocracia para tirar seu projeto da tela.</p>
+    
+    <div class="workflow">
+      <div>
+        <div class="step-num">1</div>
+        <h4>Envie sua Ideia</h4>
+        <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.5rem;">Fotos do seu pet, esboço ou o arquivo 3D (STL/OBJ).</p>
+      </div>
+      <div>
+        <div class="step-num">2</div>
+        <h4>Orçamento Ágil</h4>
+        <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.5rem;">Calculamos tempo, material e prazo exato de entrega.</p>
+      </div>
+      <div>
+        <div class="step-num">3</div>
+        <h4>Produção & Acabamento</h4>
+        <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.5rem;">Fabricação em alta definição com controle de qualidade.</p>
+      </div>
+      <div>
+        <div class="step-num">4</div>
+        <h4>Pronto para Entrega</h4>
+        <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.5rem;">Envio seguro ou retirada direta com comodidade.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contato">
+    <div class="contact-box">
+      <div class="badge">Atendimento Rápido</div>
+      <h2>Pronto para criar sua peça?</h2>
+      <p>Envie sua ideia, arquivo ou dúvida diretamente para nossa equipe técnica e receba uma estimativa sem compromisso.</p>
+      <a href="https://wa.me/5561999999999?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20com%20a%20HRD%20LAB%203D." target="_blank" class="btn-primary">
+        Iniciar Conversa no WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 HRD LAB 3D — Impressão 3D & Modelagem. Todos os direitos reservados.</p>
+    <p style="margin-top:0.5rem;">Atendimento local e envios para todo o Brasil.</p>
+  </footer>
+
+</body>
+</html>
